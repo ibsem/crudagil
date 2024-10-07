@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CRUD Ágil</title>
+        
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    </head>
+<body>
+    <header>
+        <!-- Cabeçalho comum a todas as páginas -->
+        <h1 class="text-center">Minha Aplicação</h1>
+        <!-- ... -->
+    </header>
+    <nav>
+        <!-- Navegação comum a todas as páginas -->
+        <ul>
+            <li><a href="{{ url_for('index') }}">Home</a></li>
+        <!-- Adicione mais itens de navegação conforme necessário -->
+        
+        {% if current_user.is_authenticated %}
+            <!-- Exibir o link apenas se o usuário estiver logado -->
+            <li>
+                <a href="{{ url_for('cadastro_usuario') }}">Cadastrar Novo Usuário</a>
+            </li>
+        {% endif %}
+            
+        </ul>
+    </nav>
+    <main>
+        <!-- Conteúdo específico da página será inserido aqui -->
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <!-- Rodapé comum a todas as páginas -->
+        <!-- ... -->
+    </footer>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Lista de Projetos</h1>
+    <table>
+        <tr>
+            <th>Projeto ID</th>
+            <th>Nome do Projeto</th>
+            <th>Descrição</th>
+            <th>Data de Início</th>
+            <th>Data de Término</th>
+            <th>Ações</th>
+        </tr>
+        {% for projeto in projetos %}
+            <tr>
+                <td>{{ projeto.projeto_id }}</td>
+                <td>{{ projeto.nome_projeto }}</td>
+                <td>{{ projeto.descricao }}</td>
+                <td>{{ projeto.data_inicio }}</td>
+                <td>{{ projeto.data_termino }}</td>
+                <td>
+                    <a href="{{ url_for('editar_projeto', projeto_id=projeto.projeto_id) }}">Editar</a>
+                    <a href="{{ url_for('excluir_projeto', projeto_id=projeto.projeto_id) }}">Excluir</a>
+                    <a href="{{ url_for('visualizar_sprints', projeto_id=projeto.projeto_id) }}">Ver Sprints</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    <a href="{{ url_for('novo_projeto') }}">Novo Projeto</a>
+{% endblock %}
